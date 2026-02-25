@@ -21,15 +21,14 @@ cat > "$CONFIG_FILE" << EOF
       "options": {
         "baseURL": "https://ark.cn-beijing.volces.com/api/v3",
         "apiKey": "$API_KEY"
-      }
+      },
+     "models": {
+       "$MODEL_ID": {
+         "name": "GLM-4-7-$MODEL_ID"
+       }
     }
-  },
-  "apiKey": "$API_KEY",
-  "models": {
-    "$MODEL_ID": {
-      "name": "GLM-4-7-$MODEL_ID"
-    }
-  }
+   }
+ }
 }
 EOF
 
