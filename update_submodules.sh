@@ -82,9 +82,10 @@ update_tvm_gitmodules() {
         sed -i 's|url = https://gitclone.com/github.com/NVIDIA/cutlass|url = https://ghfast.top/https://github.com/NVIDIA/cutlass|' 3rdparty/tvm/.gitmodules
         sed -i 's|url = https://gitclone.com/github.com/KhronosGroup/OpenCL-Headers|url = https://ghfast.top/https://github.com/KhronosGroup/OpenCL-Headers|' 3rdparty/tvm/.gitmodules
 
-        # 特殊处理 flashinfer 和 libflash_attn（使用 ghfast.top）
+        # 特殊处理 flashinfer、libflash_attn 和 libbacktrace（使用 ghfast.top）
         sed -i 's|url = https://gitclone.com/github.com/tlc-pack/libflash_attn|url = https://ghfast.top/https://github.com/tlc-pack/libflash_attn|' 3rdparty/tvm/.gitmodules
         sed -i 's|url = https://gitclone.com/github.com/flashinfer-ai/flashinfer.git|url = https://ghfast.top/https://github.com/flashinfer-ai/flashinfer.git|' 3rdparty/tvm/.gitmodules
+        sed -i 's|url = https://gitclone.com/github.com/tlc-pack/libbacktrace.git|url = https://ghfast.top/https://github.com/tlc-pack/libbacktrace.git|' 3rdparty/tvm/.gitmodules
 
         log_info "TVM .gitmodules 已更新"
     else
@@ -138,7 +139,7 @@ show_help() {
 
 镜像源:
     - gitclone.com     主要镜像（大部分子模块）
-    - ghfast.top       NVIDIA/cutlass, KhronosGroup/OpenCL-Headers, flashinfer, libflash_attn
+    - ghfast.top       NVIDIA/cutlass, KhronosGroup/OpenCL-Headers, flashinfer, libflash_attn, libbacktrace
     - gitee.com        catlass (已有)
     - gitcode.com      pto-isa/shmem (已有)
 EOF
