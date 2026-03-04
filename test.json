@@ -1,0 +1,63 @@
+{
+    "version": "0.2.0",
+
+    "configurations": [
+        {
+            "name": "Python Debug (debugpy)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+//             "justMyCode": false ,// 关键：设置为 false 才能跳进库代码
+            "preLaunchTask": "set env", // 先运行 Task 生成 .env
+            "envFile": "${workspaceFolder}/.env", // 然后加载这个 .env
+            "justMyCode": false,
+            "stopOnEntry": true,
+            "subProcess": true
+        },
+        {
+            "name": "C++ Debug (GDB auto)",
+            "type": "cppdbg",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "program": "/usr/bin/python",
+            "args": ["${file}"],
+
+            "MIMode": "gdb",
+            "stopAtEntry": true,
+
+            "setupCommands": [
+                { "text": "-enable-pretty-printing" },
+                { "text": "set breakpoint pending on" },
+                { "text": "set follow-fork-mode child" },
+                { "text": "set detach-on-fork off" }
+            ]
+        }
+    ],
+
+    "compounds": [
+        {
+            "name": "🔥 FULL AUTO Hybrid Debug",
+            "configurations": [
+                "Python Debug (debugpy)",
+                "C++ Debug (GDB auto)"
+            ],
+            "stopAll": true
+        }
+    ]
+}
+
+
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "set env",
+            "type": "shell",
+            "command": "source /data/w00557682/tilelang/tilelang-ascend/set_env.sh && env > ${workspaceFolder}/.env",
+            "problemMatcher": []
+        }
+    ]
+}
